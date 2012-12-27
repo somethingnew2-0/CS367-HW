@@ -1,0 +1,23 @@
+By Peter Collins
+pmcollins2
+1.)
+    A.)
+        A B C F E G D
+    B.)
+        A B E C F G D
+2.)
+    public boolean existsPath( Graphnode<T> start, Graphnode<T> dest ) { 
+        start.setVisited(true);
+        if (start.equals(dest)) {
+            return true;
+        }
+        
+        for (Graphnode<T> next : start.getSuccessors()) {
+            if (!next.getVisited()) {
+                if (existsPath(next, dest)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }

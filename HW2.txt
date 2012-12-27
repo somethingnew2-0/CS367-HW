@@ -1,0 +1,75 @@
+By Peter Collins pmcollins2
+
+1.)
+	A.) Output:
+main begin
+a begin
+b begin
+main caught Exc1
+main finally
+main end
+	B.) Output:
+main begin
+a begin
+b begin
+a caught Exc2
+b begin
+b end
+a end
+main finally
+main end
+	C.) Output:
+main begin
+a begin
+b begin
+b caught Exc3
+b end
+main caught Exc1
+main finally
+main end
+	D.) Output:
+main begin
+a begin
+b begin
+a caught Exc2
+b begin
+b caught Exc3
+b end
+a end
+main finally
+main end
+	E.) The function b() would need to have to modifier throws appended to it
+so the line would read:
+	void b( ) throws Exc2 {
+
+2.)
+public void forceAdd(int pos, E item) {
+	// Add the item to the list at position pos just as the ListADT.add  
+	// method would do.  However, if the call to add throws an
+	// IndexOutOfBoundsException, add the item to the end of the list.
+    try {
+    	this.add(pos, item);
+    } catch (IndexOutOfBoundsException e) {
+    	this.add(item);
+    }
+}
+3.)
+	A.)
+		while (!items.isEmpty()) O(N) - N is the number of items in the 
+								 SimpleArrayList, linear time for going
+								 through the whole list
+		    items.remove(items.size() - 1); O(1) - Constant time for 
+		    								removing from the end of 
+		    								the SimpleArrayList
+		Overall it is linear time because O(N * 1) = O(N)
+	B.)
+		while (!items.isEmpty()) O(N) - N is the number of items in the 
+								 SimpleArrayList, linear time for going
+								 through the whole list
+		    items.remove(0); O(N-1) - Linear time for removing from the 
+	    					 beginning of the SimpleArrayList because it 
+	    					 has to shift all the values of the internal array
+	    					 which reads the numbers of items in the 
+	    					 SimpleArrayList - 1.
+	    Overall it is quadratic time, because O(N * (N-1)) = O(N^2)
+	

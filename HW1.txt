@@ -1,0 +1,55 @@
+By Peter Collins pmcollins2
+1.)	
+//Change the i in the add method call to words.size()	
+for (int i = 1; i <= words.size(); i++) {
+    words.add(words.size() - 1, words.remove(words.size() - i)); 
+} 
+2.)
+The loop is taking all items out of the src ListADT and placing them in the dst ListADT.  Basically it is cutting and pasting the contents of src to dst.
+
+3.)
+public static ListADT<Integer> uniqueInts(ListADT<Integer> intVals)
+		throws BadListException {	
+	// Return a new list containing the unique integer values in the list
+	// of integers, intVals.
+	//
+	// If intVals is null, throw a BadListException.
+	// If intVals is empty, return a new empty list.
+	//
+	// Example: intVals: 1,1,1,1,1 result: 1
+	// Example: intVals: 1,5,5,2,8,1,5 result: 1,5,2,8
+	// Example: intVals: 1,5,8,2,0 result: 1,5,8,2,0
+	if (intVals == null) {
+		throw new BadListException();
+	}
+	
+	// ListADT to return
+	ListADT<Integer> retList = new ArrayList<Integer>();
+	
+	// Iterate through the given intVals
+	Iterator<Integer> iter = intVals.iterator();
+	while (iter.hasNext()) {
+		int item = iter.next();
+		// Iterate through the current return list
+		Iterator<Integer> retIter = retList.iterator();
+		// Check to see if the current return list contains the value
+		boolean retContains = false;
+		while (retIter.hasNext()) {
+			int retItem = retIter.next();
+			// If the return list already contains the parameter integer,
+			// break the loop.
+			if (item == retItem) {
+				retContains = true;
+				break;
+			}
+		}
+		// If the return list doesn't contain the parameter integer,
+		// add that integer to the end of the return list
+		if (!retContains) {
+			retList.add(item);
+		}
+	}
+	
+	// Return the created return list		
+	return retList;
+}

@@ -1,0 +1,78 @@
+By Peter Collins
+pmcollins2
+
+1.)
+	A.) Worst case time complexity
+		Algorithm 1: O(N^2)
+		Algorithm 2: O(N)
+		Algorithm 3: O(N^3)
+	B.) Algorithm 2 has the lowest worst-case time complexity.
+	C.) No, if we are using the algorithms to solve issues with small numbers of
+	 elements then a higher complexity algorithm might be faster.  In this case,
+	 if we have less than six elements for the algorithms, algorithm 1 will be
+	 faster than algorithm 2.
+ 2.)
+ 	A.) The worst-case time complexity would be O(K) because comparing sizes is 
+ 	a constant time operation, and adding an item to the end of a list when we
+ 	don't need to resize a constant time operation as well.  However, adding an 
+ 	item to the beginning of an array is a linear time operation because the all
+ 	the elements in the array have to shift over. So overall, it is linear in worst
+ 	case.
+ 	B.) The worst-case time complexity would be O(N) because calling the contains
+ 	method is a linear operation, adding to the end is a constant time operation,
+ 	conjecturing the size of a list a constant time operation, and removing from the
+ 	end of an array is a constant time operation.  In the worst case it is a linear
+ 	time operation.
+ 	C.) The worst-case time complexity is O(K^2) because iterating through the 
+ 	list2 is linear time, coupled with adding to beginning of the list3, which is 
+ 	linear time as well, the result is quadratic time.  Removing from the end of the
+ 	list is constant time, so overall it is quadratic time worst-case.
+ 	D.) The worst-case time complexity is O(N^2) because similar to the previous
+ 	problem iterating though list1 is linear time, coupled with removing from the 
+ 	beginning of the list, which is linear time, the result is quadratic time.
+ 	Adding to the end of the array is a constant time operation, so overall it is 
+ 	quadratic time worst-case.
+3.)
+	A.)
+public static <E> List<E> union( List<E> list1, List<E> list2 ) 
+	throws BadListException {
+	// If list1 or list2 (or both list1 and list2) is null, throw a BadListException.
+	// Otherwise, return a new List containing the union of list1 and list2
+	//
+	// Example:   list1: A,B,C      list2: D,A,E,C     result: A,B,C,D,E
+	// Example:   list1: A,B,B,C    list2: B,C,B,A     result: A,B,C
+	if (list1 == null || list2 == null) {
+		throw new BadListException();	
+	}
+	
+	List<E> unionList = new ArrayList<E>(); // List to return
+	
+	Iterator<E> list1Iter = list1.iterator();
+	E listItem;
+	while (list1Iter.hasNext()) {
+		listItem = (E) list1Iter.next();
+		if (!unionList.contains(listItem)) {
+			unionList.add(listItem);
+		}
+	}
+	
+	Iterator<E> list2Iter = list2.iterator();
+	while (list2Iter.hasNext()) {
+		listItem = (E) list2Iter.next();
+		if (!unionList.contains(listItem)) {
+			unionList.add(listItem);
+		}
+	}
+	
+	return unionList;
+}
+	B.)
+		The worst-case time complexity is O(N^2 + K^2) for list1 of N items and 
+		list2 of K items.  The contains method as well as the add method on an
+		array list has worst case complexity of linear time, which makes it 
+		O(2N + 2K), but iterating through each list as well as calling contains
+		and add makes it O(N(2N) + K(2K)). Losing the coefficients though it results
+		in being O(N^2 + K^2).
+ 	 
+ 		
+ 	 

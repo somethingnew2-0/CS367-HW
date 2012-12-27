@@ -1,0 +1,19 @@
+By Peter Collins
+pmcollins2
+1.)
+    Visited Vertexes                Priority Queue's items
+    -                               (0,H)
+    H:0                             (4,G), (11,S), (33,A)
+    H:0,G:4                         (10,R), (11,S), (33,A)
+    H:0,G:4,R:10                    (11,S), (24,A), (30,P)
+    H:0,G:4,R:10,S:11               (12,A), (30,P)
+    H:0,G:4,R:10,S:11,A:12          (14,P)
+    H:0,G:4,R:10,S:11,A:12,P:14     -     
+2.)
+    A B F G E D C
+    A F B E G D C
+    A F E B G D C
+     
+     
+     
+     

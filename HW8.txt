@@ -1,0 +1,34 @@
+By Peter Collins
+pmcollins2
+1.)    
+    22  33  11  33  44  88  55  88  66  99  77
+2.)
+    A.)
+        O(N) or linear time, because the sort will stop after the first for loop
+        since there were no swaps, and it only iterated the data once.
+    B.)
+        O(N^2) or quadratic time, because the sort will iterate much like normal
+        bubble sort through the data N times, but alternating going forward and
+        backwards. In reality it will be N(N-1)/2 number of moves, but that is
+        still quadratic time.
+    C.)
+        The worst case complexity is O(N^2) because in reverse order the two end
+        elements take N moves and to get every element into place takes N iterations.
+        A more worst case than reverse order would take the same N iterations to
+        move all elements N/2 times.
+    D.)
+        6  7  8  9  10  1  2  3  4  5   
+3.)
+    A.)
+        O(N^2) or quadratic time, because the sort won't do any swaps or insertions, 
+        but it will iterate all the data once to compare left and right each time,
+        and at most compare all the values with the left and the right each time.
+    B.)
+        O(N^2) or quadratic time, because the sort unlike in order it will do swaps
+        and insertions 3 each iteration with N iterations, but it will also do the 
+        searching from the left and from the right each time making it quadratic.
+    C.)
+        O(N^2) or quadratic time, because regardless of in order or reverse order
+        it will do O(N^2) comparisons.
+    D.)
+        5  4  3  2  1  10  9  8  7  6

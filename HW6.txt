@@ -1,0 +1,78 @@
+By Peter Collins
+pmcollins2
+
+1.)
+	A.)
+            A
+           / \
+          C   B
+         / \   \
+        F	E   D
+	   /       /
+      H       G
+    B.)
+        The mystery method flips a tree so it is vertically symmetrically
+            equivalent based on the first node given.
+2.)
+    A.)
+        The number of nodes with one child is 0 if the tree is empty .
+        The number of nodes with one child in a tree with one node
+            is 1 plus the recursively searched children of that one node.
+        The number of nodes with one child in a tree with at least one node
+            is 0 plus the recursively searched children of those child nodes.
+    B.)
+        public int countOneChild(Treenode<T> n) {
+            if (n == null || n.getChildren().size() == 0) {
+                return 0;
+            } else if (n.getChildren().size() == 1) {
+                return 1 + countOneChild(n.getChildren().get(0));
+            } else {
+                int returnCount = 0; 
+                Iterator<Treenode<T>> iterator = n.getChildren().iterator();
+                while (iterator.hasNext()) {
+                    returnCount += countOneChild(iterator.next());                    
+                }
+                return returnCount;
+            }
+        }
+3.)
+    A.)
+        The largest item in an empty tree is null.
+        The largest item in a tree with one node is the value of that one node.
+        The largest item in a tree with more than one node determined by the 
+            recursive comparison of the values of the nodes.
+    B.)
+        public K findLargest(BinaryTreenode<K> n) {
+            if (n == null) {
+                return null;
+            } else if (n.getLeft() == null && n.getRight() == null) {
+                return n.getData();
+            } else {
+                K largest = n.getData();
+                if (n.getLeft() != null) {
+                    K largestLeft = findLargest(n.getLeft());
+                    if (largest.compareTo(largestLeft) < 0) {
+                        largest = largestLeft;
+                    }
+                }
+                if (n.getRight() != null) {
+                    K largestRight = findLargest(n.getRight());
+                    if (largest.compareTo(largestRight) < 0) {
+                        largest = largestRight;
+                    }
+                }
+                return largest;
+            }
+        }
+    C.)
+        public K findLargest(BinaryTreenode<K> n) {
+            if (n == null) {
+                return null;
+            }
+            if (n.getRight() != null) {
+                return findLargest(n.getRight());
+            } else {
+                return n.getData();
+            }
+        }
+	   	
